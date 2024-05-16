@@ -3,8 +3,8 @@ import java.util.*;
 public class Recursion {
 
     /**
-     *
-     * @param start
+     * Lists all odd numbers from a given integer to zero
+     * @param start is the integer it starts from
      */
     public static void oddNumbers(int start) {
         if (start < 1) {
@@ -27,9 +27,9 @@ public class Recursion {
     }
 
     /**
-     *
-     * @param check
-     * @return
+     * Counts the vowels in a string
+     * @param check is the string we are checking for vowels
+     * @return the number of vowels in the string check
      */
      public static int vowels(String check) {
          // base case
@@ -51,20 +51,35 @@ public class Recursion {
          }
      }
 
-//    public static int smallest(int[] smallest) {
+    /**
+     * Finds the smallest integer of an array
+     * @param smallest is the integer array we are finding the smalled integer
+     * @return the smallest integer of the array
+     */
+//     public static int smallest(int[] smallest) {
 //        if (smallest.length < 1) {
 //            throw new IllegalArgumentException();
 //        }
-//
+
 //        if (smallest.length == 1) {
 //            return smallest[0];
 //        }
-//
+
 //        else {
-//
+//             smallHelper(int[] smallest, 1);
 //        }
 //    }
-//
+
+//    private static int smallHelper(int[] smallest, int index) {
+
+//    }
+
+
+    /**
+     * Checks for a case in the string where there is a duplicate of characters in it
+     * @param observe is the string we look at
+     * @return true if there is a duplicate and false if not
+     */
     public static boolean duplicateNeighbors(String observe) {
         if (observe.isEmpty() || observe.length() == 1) {
             return false;
@@ -82,6 +97,10 @@ public class Recursion {
         }
     }
 
+    /**
+     * Prints the sentence character by character, each with their own line
+     * @param sentence is split character by character
+     */
    public static void printChars(String sentence) {
        if (sentence.length() == 0) {
            System.out.println("");
@@ -120,25 +139,34 @@ public class Recursion {
         }
     }
 
-//    public static String longestWord(String[] words) {
+    /**
+     * Finds the longest word in the array
+     * @param words is the String array we are using
+     * @return the longest word of the array
+     */
+//     public static String longestWord(String[] words) {
 //        if (words.length == 0) {
 //            return null;
 //        }
-//
+
 //        else {
 //            String longest = words[0];
 //            int maxLength = words[0].length();
-//
+
 //            if (maxLength > words[].length()) {
-//
+
 //            }
 //        }
+//    }
+
+//    private static String longestHelper(String[] words, int index) {
+
 //    }
 
     /**
      * Finds the nth Lucas Number
      * @param n is the Lucas Number
-     * @return 
+     * @return the nth Lucas Number
      */
     public static int lucasNumber(int n) {
         if (n == 0) {
@@ -157,10 +185,11 @@ public class Recursion {
     public static void main(String[] args) {
         oddNumbers(6);
         System.out.println(vowels("are we there yet?"));
-//        System.out.println(smallest(new int[] {1}));
+//      System.out.println(smallest(new int[] {1}));
         System.out.println(duplicateNeighbors("abb")); // working but not returning correct
         printChars("sentence");
         hipHop(6);
+//      longestWord(new String[] {"and", "as", "abba", "are"});
         System.out.println(lucasNumber(3));
     }
 }
