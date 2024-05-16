@@ -73,18 +73,25 @@ public class Recursion {
         else {
             char char1 = Character.toLowerCase(observe.charAt(0));
             char char2 = Character.toLowerCase(observe.charAt(1));
-            if (char1 != char2) {
-                return duplicateNeighbors(observe.substring(1));
+            if (char1 == char2) {
+                return true;
             }
             else {
-                return true;
+                return duplicateNeighbors(observe.substring(1, observe.length() - 1));
             }
         }
     }
 
-//    public static void printChars(String sentence) {
-//
-//    }
+   public static void printChars(String sentence) {
+       if (sentence.length() == 0) {
+           System.out.println("");
+       }
+
+       else { 
+           System.out.println(sentence.substring(0, 1));
+           printChars(sentence.substring(1, sentence.length()));
+       }
+   }
 
     /**
      * Decrementing from the value to 1, it will print the number and hip if the number
@@ -128,7 +135,16 @@ public class Recursion {
 //        }
 //    }
 
+    /**
+     * Finds the nth Lucas Number
+     * @param n is the Lucas Number
+     * @return 
+     */
     public static int lucasNumber(int n) {
+        if (n == 0) {
+            return 2;
+        }
+
         if (n == 1) {
             return 1;
         }
@@ -142,7 +158,9 @@ public class Recursion {
         oddNumbers(6);
         System.out.println(vowels("are we there yet?"));
 //        System.out.println(smallest(new int[] {1}));
+        System.out.println(duplicateNeighbors("abb")); // working but not returning correct
+        printChars("sentence");
         hipHop(6);
-//        System.out.println(lucasNumber(3));
+        System.out.println(lucasNumber(3));
     }
 }
