@@ -1,5 +1,14 @@
 import java.util.*;
 
+/*
+ * Kevin Nguyen
+ * 05/16/2024
+ *
+ * The main program holds 8 different recursion methods: list all odd numbers,
+ * print number of vowels, find the smallest integer, check for duplicates, print a
+ * sentence character by character, list integers and indicate which are divisible by 3
+ * and/or 5, find the longest word, and print the nth lucas number.
+ */
 public class Recursion {
 
     /**
@@ -32,12 +41,10 @@ public class Recursion {
      * @return the number of vowels in the string check
      */
      public static int vowels(String check) {
-         // base case
          if (check.isEmpty()) {
              return 0;
          }
 
-         // else substring stuff
          else {
              char character = Character.toLowerCase(check.charAt(0));
 
@@ -53,26 +60,30 @@ public class Recursion {
 
     /**
      * Finds the smallest integer of an array
-     * @param smallest is the integer array we are finding the smalled integer
+     * @param smallest is the integer array we are finding the smallest integer
      * @return the smallest integer of the array
      */
-//     public static int smallest(int[] smallest) {
-//        if (smallest.length < 1) {
-//            throw new IllegalArgumentException();
-//        }
+     public static int smallest(int[] smallest) {
+        if (smallest.length < 1) {
+            throw new IllegalArgumentException();
+        }
 
-//        if (smallest.length == 1) {
-//            return smallest[0];
-//        }
+        else {
+             return smallHelper(smallest, 0, smallest[0]);
+        }
+    }
 
-//        else {
-//             smallHelper(int[] smallest, 1);
-//        }
-//    }
+    private static int smallHelper(int[] array, int index, int current) {
+        if (index == array.length) {
+            return current;
+        }
 
-//    private static int smallHelper(int[] smallest, int index) {
+        if (array[index] < current) {
+            current = array[index];
+        }
 
-//    }
+        return smallHelper(array, index + 1, current);
+    }
 
 
     /**
@@ -88,11 +99,13 @@ public class Recursion {
         else {
             char char1 = Character.toLowerCase(observe.charAt(0));
             char char2 = Character.toLowerCase(observe.charAt(1));
+
             if (char1 == char2) {
                 return true;
             }
+
             else {
-                return duplicateNeighbors(observe.substring(1, observe.length() - 1));
+                return duplicateNeighbors(observe.substring(1));
             }
         }
     }
@@ -144,24 +157,27 @@ public class Recursion {
      * @param words is the String array we are using
      * @return the longest word of the array
      */
-//     public static String longestWord(String[] words) {
-//        if (words.length == 0) {
-//            return null;
-//        }
+     public static String longestWord(String[] words) {
+        if (words.length == 0) {
+            return null;
+        }
 
-//        else {
-//            String longest = words[0];
-//            int maxLength = words[0].length();
+        else {
+            return longestHelper(words, 0, words[0]);
+        }
+    }
 
-//            if (maxLength > words[].length()) {
+    private static String longestHelper(String[] words, int index, String current) {
+        if (index == words.length) {
+            return current;
+        }
 
-//            }
-//        }
-//    }
+        if (current.length() < words[index].length()) {
+            current = words[index];
+        }
 
-//    private static String longestHelper(String[] words, int index) {
-
-//    }
+        return longestHelper(words, index + 1, current);
+    }
 
     /**
      * Finds the nth Lucas Number
@@ -184,12 +200,18 @@ public class Recursion {
 
     public static void main(String[] args) {
         oddNumbers(6);
+        System.out.println();
         System.out.println(vowels("are we there yet?"));
-//      System.out.println(smallest(new int[] {1}));
-        System.out.println(duplicateNeighbors("abb")); // working but not returning correct
+        System.out.println();
+        System.out.println(smallest(new int[] {1}));
+        System.out.println();
+        System.out.println(duplicateNeighbors("abaa")); // working but not returning correct
+        System.out.println();
         printChars("sentence");
         hipHop(6);
-//      longestWord(new String[] {"and", "as", "abba", "are"});
+        System.out.println();
+        System.out.println(longestWord(new String[] {"and", "as", "abba", "are"}));
+        System.out.println();
         System.out.println(lucasNumber(3));
     }
 }
